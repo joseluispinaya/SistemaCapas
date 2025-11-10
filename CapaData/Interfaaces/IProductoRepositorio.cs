@@ -12,6 +12,6 @@ namespace CapaData.Interfaaces
         Task<List<Producto>> Lista();
         Task<bool> Guardar(Producto objeto);
         Task<bool> Editar(Producto objeto);
-        //Task<bool> Editar(Categoria objeto);
+        //Task<string> UploadImageAsync(Categoria objeto);
     }
 }

@@ -66,7 +66,7 @@
                                 <input type="text" class="form-control form-control-sm" id="txtDescripcion" autocomplete="off">
                             </div>
                         </div>
-                        <div class="row mb-4">
+                        <div class="row mb-3">
                             <div class="col-sm-4">
                                 <label class="col-form-label">Cantidad</label>
                                 <input type="number" class="form-control form-control-sm" id="txtCantidad">
@@ -80,17 +80,22 @@
                                 <input type="number" class="form-control form-control-sm" id="txtVenta">
                             </div>
                         </div>
+
                         <div class="row">
-                            <div class="col-sm-12">
-                                <label class="col-form-label">Imagen</label>
-                                <input class="form-control-file" type="file" id="txtImagen" />
+                            <div class="col-12">
+                                <label for="txtImagen" class="form-label">Seleccionar imagen:</label>
+                                <input class="form-control" type="file" id="txtImagen" accept="image/*">
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-4">
-                        <img id="imgProducto" style="max-width:200px;"
-                             src="https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=300" class="rounded mx-auto d-block"
-                             alt="...">
+                        <div class="row">
+
+                            <div class="col-12 text-center">
+                                <img id="imgProducto" src="https://joseluis1989-007-site1.ltempurl.com/Imagenes/sinimagen.png"
+                                     class="img-fluid img-thumbnail" style="max-height: 200px;" alt="Vista previa">
+                            </div>
+                        </div>
                     </div>
 
                 </div>
@@ -98,6 +103,34 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                 <button type="button" class="btn btn-primary" id="btnGuardar">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="mdDataPrueba" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropPrueba" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropPrueba">Imagen Prueba</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-12 mb-3">
+                        <label for="inputFoto" class="form-label">Seleccionar imagen:</label>
+                        <input class="form-control" type="file" id="inputFoto" accept="image/*">
+                    </div>
+
+                    <div class="col-12 text-center">
+                        <img id="previewFoto" src="https://images.unsplash.com/photo-1640271443625-3276ed8f62b5?w=300"
+                             class="img-fluid img-thumbnail" style="max-height: 250px;" alt="Vista previa">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" id="btnGuardarImg">Guardar</button>
             </div>
         </div>
     </div>

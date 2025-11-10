@@ -17,5 +17,6 @@ namespace CapaEntidades
         public Categoria? Categoria { get; set; }
         public int Cantidad { get; set; }
         public bool? Activo { get; set; }
+        public string PhotoFull => string.IsNullOrEmpty(ImagenPro) ? "/images/bot1.png" : ImagenPro;
     }
 }

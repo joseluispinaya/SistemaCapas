@@ -1,6 +1,7 @@
 using CapaData.Configuracion;
 using CapaData.Implementacion;
 using CapaData.Interfaaces;
+using CapaWeb.Utilidades.Helpers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,7 +10,8 @@ builder.Services.AddControllersWithViews();
 builder.Services.Configure<ConnectionStrings>(builder.Configuration.GetSection("ConnectionStrings"));
 builder.Services.AddScoped<ICategoriaRepositorio, CategoriaRepositorio>();
 builder.Services.AddScoped<IProductoRepositorio, ProductoRepositorio>();
-//builder.Services.AddScoped<IProductoRepositorio, ProductoRepositorio>();
+builder.Services.AddScoped<IImageHelper, ImageHelper>();
+//builder.Services.AddScoped<IImageHelper, ImageHelper>();
 
 var app = builder.Build();
 

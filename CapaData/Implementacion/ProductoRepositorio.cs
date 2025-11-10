@@ -27,7 +27,10 @@ namespace CapaData.Implementacion
             using (var conexion = new SqlConnection(con.CadenaSQL))
             {
                 await conexion.OpenAsync();
-                SqlCommand cmd = new("usp_ModificarProducto", conexion);
+                SqlCommand cmd = new("usp_ModificarProducto", conexion)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
                 cmd.Parameters.AddWithValue("@IdProducto", objeto.IdProducto);
                 cmd.Parameters.AddWithValue("@IdCategoria", objeto.Categoria!.IdCategoria);
                 cmd.Parameters.AddWithValue("@ImagenPro", objeto.ImagenPro);
@@ -39,7 +42,7 @@ namespace CapaData.Implementacion
                 //cmd.Parameters.AddWithValue("@Activo", objeto.Activo);
 
                 cmd.Parameters.Add("@Resultado", SqlDbType.Bit).Direction = ParameterDirection.Output;
-                cmd.CommandType = CommandType.StoredProcedure;
+                //cmd.CommandType = CommandType.StoredProcedure;
 
                 try
                 {
