@@ -75,5 +75,10 @@ namespace CapaWeb.Controllers
             };
         }
 
+        public IActionResult Denegado()
+        {
+            return View();
+        }
+
     }
 }

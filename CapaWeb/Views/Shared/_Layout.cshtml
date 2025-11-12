@@ -25,42 +25,44 @@
             </div> *@
         </form>
         <!-- Navbar-->
-        <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
-                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="#!">Jose Luis</a></li>
-                    <li><hr class="dropdown-divider" /></li>
-                    <li><a class="dropdown-item" href="#">Salir</a></li>
-                </ul>
-            </li>
-        </ul>
+        @await Component.InvokeAsync("MenuUsuario")
     </nav>
     <div id="layoutSidenav">
         <div id="layoutSidenav_nav">
             <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                 <div class="sb-sidenav-menu">
                     <div class="nav">
-                        <a class="nav-link" asp-controller="Home" asp-action="Index">
-                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                            Dashboard
-                        </a>
+                        @if (User.IsInRole("Administrador"))
+                        {
+                            <a class="nav-link" asp-controller="Home" asp-action="Index">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                Dashboard
+                            </a>
+                        }
 
                         <div class="sb-sidenav-menu-heading">Gestion</div>
-                        <a class="nav-link" asp-controller="Categoria" asp-action="Index">
-                            <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                            Categorias
-                        </a>
-
-                        <a class="nav-link" asp-controller="Producto" asp-action="Index">
-                            <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                            Productos
-                        </a>
-
-                        <a class="nav-link" asp-controller="Usuario" asp-action="Index">
-                            <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                            Usuarios
-                        </a>
+                        @if (User.IsInRole("Administrador"))
+                        {
+                            <a class="nav-link" asp-controller="Usuario" asp-action="Index">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                Usuarios
+                            </a>
+                            <a class="nav-link" asp-controller="Categoria" asp-action="Index">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                Categorias
+                            </a>
+                            <a class="nav-link" asp-controller="Producto" asp-action="Index">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                Productos
+                            </a>
+                        }
+                        @if (User.IsInRole("Cajero"))
+                        {
+                            <a class="nav-link" asp-controller="Producto" asp-action="Index">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                Productos
+                            </a>
+                        }
 
                     </div>
                 </div>

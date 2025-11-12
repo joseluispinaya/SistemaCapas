@@ -1,6 +1,9 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using CapaWeb.Models;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CapaWeb.Controllers;
 
@@ -13,11 +16,13 @@ public class HomeController : Controller
         _logger = logger;
     }
 
+    [Authorize(Roles = "Administrador")]
     public IActionResult Index()
     {
         return View();
     }
 
+    [Authorize(Roles = "Administrador")]
     public IActionResult Privacy()
     {
         return View();
@@ -28,4 +33,11 @@ public class HomeController : Controller
     {
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
+
+    public async Task<IActionResult> Salir()
+    {
+        await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+        return RedirectToAction("Login", "Acceso");
+    }
+
 }

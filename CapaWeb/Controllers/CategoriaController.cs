@@ -1,6 +1,7 @@
 ﻿using CapaData.Interfaaces;
 using CapaEntidades;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CapaWeb.Controllers
 {
@@ -13,6 +14,7 @@ namespace CapaWeb.Controllers
             _repositorio = repositorio;
         }
 
+        [Authorize(Roles = "Administrador")]
         public IActionResult Index()
         {
             return View();

@@ -9,6 +9,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CapaEntidades.DTO;
 
 namespace CapaData.Implementacion
 {
@@ -95,6 +96,33 @@ namespace CapaData.Implementacion
                         IdCategoria = Convert.ToInt32(dr["IdCategoria"]),
                         Nombre = dr["Nombre"].ToString()!,
                         Activo = Convert.ToBoolean(dr["Activo"])
+                    });
+                }
+            }
+            return lista;
+        }
+
+        public async Task<List<CategoriaDTO>> ListaDetalle()
+        {
+            //List<Categoria> lista = [];
+            List<CategoriaDTO> lista = [];
+
+            using (var conexion = new SqlConnection(con.CadenaSQL))
+            {
+                await conexion.OpenAsync();
+                SqlCommand cmd = new("usp_ListarCategoriasConCantProd", conexion)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
+
+                using var dr = await cmd.ExecuteReaderAsync();
+                while (await dr.ReadAsync())
+                {
+                    lista.Add(new CategoriaDTO()
+                    {
+                        IdCategoria = Convert.ToInt32(dr["IdCategoria"]),
+                        Nombre = dr["Categoria"].ToString()!,
+                        CantidadProductos = Convert.ToInt32(dr["CantidadProductos"])
                     });
                 }
             }

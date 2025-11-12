@@ -1,4 +1,5 @@
 ﻿using CapaEntidades;
+using CapaEntidades.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace CapaData.Interfaaces
         Task<List<Categoria>> Lista();
         Task<bool> Guardar(Categoria objeto);
         Task<bool> Editar(Categoria objeto);
-        //Task<bool> Editar(Categoria objeto);
+        Task<List<CategoriaDTO>> ListaDetalle();
+        //Task<List<CategoriaDTO>> Lista();
     }
 }
